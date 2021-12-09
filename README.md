@@ -25,7 +25,7 @@ ER DIAGRAM
 ![Στιγμιότυπο οθόνης (154)](https://user-images.githubusercontent.com/57221590/145481919-127e43f6-2d4e-46d3-a8dc-8ec08f5a14f1.png)
 
 
-CLASS DIAGRAM
+SQL DIAGRAM
 
 ![Στιγμιότυπο οθόνης (156)](https://user-images.githubusercontent.com/57221590/145482007-51fda9d2-eb1f-4df8-a277-8a5b9efa79d9.png)
 
