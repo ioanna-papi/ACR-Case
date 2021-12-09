@@ -1,20 +1,20 @@
 use DB104;
 
-/*Ερώτημα 1*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 1*/
 SELECT code, fullname, c_address, phone
 FROM Customer
 
-/*Ερώτημα 2*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 2*/
 SELECT code, first_day, last_day
 FROM Rental
 WHERE value > 200
 
-/*Ερώτημα 3*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 3*/
 SELECT C.code, fullname, phone, R.code
 FROM Customer as C, Rental as R
 WHERE C.code = R.cust_code
 
-/*Ερώτημα 4*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 4*/
 SELECT fullname, phone
 FROM Customer as C, Departement as D
 WHERE (D.code = dep_code AND D.code = 10025)
@@ -25,25 +25,25 @@ WHERE (C.code = R.cust_code AND
 		R.first_day >= '2010-09-23' AND
 		R.last_day <= '2010-09-23')
 
-/*Ερώτημα 5*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 5*/
 UPDATE Rental
 SET value = value - 0.05*value
 
-/*Ερώτημα 6*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 6*/
 SELECT month(p_date), sum(amount), avg(amount)
 FROM Payment
 WHERE year(p_date) = 2010
 GROUP BY month(p_date)
 
-/*Ερώτημα 7*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 7*/
 SELECT C1.code, C2.dep_code, sum(R.value)
 FROM Car as C1, Customer as C2, Rental as R
 WHERE (C1.plate_number = R.plate_number AND
 		C2.code = R.cust_code)
 GROUP BY C1.code, C2.dep_code
 
-/*Ερώτημα 8
-Η ενοικίαση δεν ξεκίνησε απαραίτητα τον Ιούνιο του 2010, αλλά ο πελάτης είχε στην κατοχή του το αυτοκίνητο τη συγκεκριμένη περίοδο*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 8
+Γ‡ Γ¥Γ­Γ―Γ©ΓªΓΓ΅Γ³Γ§ Γ¤Γ¥Γ­ Γ®Γ¥ΓªΓΓ­Γ§Γ³Γ¥ Γ΅Γ°Γ΅Γ±Γ΅ΓΓ΄Γ§Γ΄Γ΅ Γ΄Γ―Γ­ Γ‰Γ―Γ½Γ­Γ©Γ― Γ΄Γ―Γµ 2010, Γ΅Γ«Γ«Γ Γ― Γ°Γ¥Γ«ΓΓ΄Γ§Γ² Γ¥ΓΓ·Γ¥ Γ³Γ΄Γ§Γ­ ΓªΓ΅Γ΄Γ―Γ·Γ Γ΄Γ―Γµ Γ΄Γ― Γ΅ΓµΓ΄Γ―ΓªΓΓ­Γ§Γ΄Γ― Γ΄Γ§ Γ³ΓµΓ£ΓªΓ¥ΓªΓ±Γ©Γ¬ΓΓ­Γ§ Γ°Γ¥Γ±ΓΓ―Γ¤Γ―*/
 SELECT DISTINCT C.code, count(R.code), avg(R.value)
 FROM Customer as C, Rental as R
 WHERE (C.code = cust_code AND
@@ -51,7 +51,7 @@ WHERE (C.code = cust_code AND
 GROUP BY C.code
 HAVING (count(R.code) > 4 AND avg(R.value) > 150)
 
-/*Ερώτημα 9*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 9*/
 SELECT C.code, fullname
 FROM Customer as C
 WHERE  EXISTS (SELECT R.cust_code, sum(P.amount) 
@@ -63,7 +63,7 @@ WHERE  EXISTS (SELECT R.cust_code, sum(P.amount)
 				GROUP BY R.cust_code
 				HAVING sum(P.amount) > 1500 )
 
-/*Ερώτημα 10*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 10*/
 CREATE VIEW V1(categ, sum_value)
  AS 
 SELECT C.code, sum(R.value)
@@ -83,7 +83,7 @@ FROM Rental
 SELECT V1.categ, cast(V1.sum_value as float)/cast(V2.sum_value as float)
 FROM V1, V2
 
-/*Ερώτημα 11*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 11*/
 CREATE VIEW V3(month2010, sum_amount)
 AS
 SELECT month(p_date), sum(amount)
@@ -106,7 +106,7 @@ SELECT V4.month2011, cast(V4.sum_amount as float)/cast(V3.sum_amount as float)
 FROM V3, V4
 WHERE V3.month2010 = V4.month2011
 
-/*Ερώτημα 12*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 12*/
 CREATE VIEW V5(depcode, avg_value)
 AS
 SELECT C.dep_code, avg(R.value)
@@ -124,7 +124,7 @@ SELECT V5.depcode
 FROM V5,V6
 WHERE V5.avg_value > V6.avg_value
 
-/*Ερώτημα 13*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 13*/
 CREATE VIEW V7( mon, avg_value)
 AS
 SELECT month(first_day), avg(value)
@@ -148,7 +148,7 @@ WHERE (V8.avg_value > V7.avg_value
 		AND V8.mon2 = V7.mon)
 GROUP BY V7.mon
 
-/*Ερώτημα 14*/
+/*Γ…Γ±ΓΎΓ΄Γ§Γ¬Γ΅ 14*/
 CREATE VIEW V9(period, month2010)
 AS
 SELECT DATEDIFF(day, first_day, last_day), month(first_day)
