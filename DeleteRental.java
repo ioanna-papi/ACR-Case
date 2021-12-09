@@ -1,5 +1,5 @@
-import java.util. *;
-import java.sql. *;
+import java.util.*;
+import java.sql.*;
 public class DeleteRental {
 
 	public static void main(String[] args) throws java.lang.ClassNotFoundException, SQLException {
