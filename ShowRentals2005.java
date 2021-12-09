@@ -1,5 +1,5 @@
-import java.util. *;
-import java.sql. *;
+import java.util.*;
+import java.sql.*;
 import java.sql.Date;
 public class ShowRentals2005 {
 
