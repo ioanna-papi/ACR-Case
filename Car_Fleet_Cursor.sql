@@ -23,3 +23,4 @@ END
 
 CLOSE car_fleet_cursor ;
 DEALLOCATE car_fleet_cursor ;
+
